@@ -1,0 +1,56 @@
+.purchasing-container {
+  padding: 20px;
+  position: relative;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  flex: 1;
+  text-align: right;
+}
+
+.search-container .form-control {
+  display: inline-block;
+  width: 200px; /* Adjust width as needed */
+}
+
+.button-container {
+  margin: 0;
+  text-align: right;
+  padding-left: 20px; /* Adjust padding as needed */
+}
+
+.purchasing-table {
+  margin-top: 20px;
+}
+
+.modal-dialog {
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.purchasing-table .actions-column {
+  width: 150px; /* Adjust width as needed */
+  text-align: center;
+}
+
+.purchasing-table .actions-column .btn {
+  margin: 0 5px; /* Add margin between buttons */
+}
+
+.delete-btn .fas.fa-trash {
+  color: red; /* Set the color for delete icon */
+}

@@ -1,0 +1,36 @@
+.sales-order-form {
+    padding: 20px;
+}
+
+.sales-order-form h2 {
+    margin-bottom: 20px;
+}
+
+.sales-order-form .form-group {
+    margin-bottom: 15px;
+}
+
+.sales-order-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.sales-order-form input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.sales-order-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sales-order-form button:hover {
+    background-color: #0056b3;
+}

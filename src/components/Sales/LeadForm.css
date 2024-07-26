@@ -1,0 +1,41 @@
+.lead-form {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lead-form h2 {
+    margin-bottom: 20px;
+}
+
+.lead-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.lead-form label {
+    margin-bottom: 10px;
+}
+
+.lead-form input,
+.lead-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.lead-form button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.lead-form button:hover {
+    background-color: #218838;
+}

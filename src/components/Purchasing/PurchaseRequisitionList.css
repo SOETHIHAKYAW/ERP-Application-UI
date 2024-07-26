@@ -1,0 +1,42 @@
+/* src/components/Purchasing/PurchaseRequisitionList.css */
+
+.purchase-requisition-list {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.purchase-requisition-list h2 {
+    margin-bottom: 20px;
+}
+
+.purchase-requisition-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.purchase-requisition-list th,
+.purchase-requisition-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.purchase-requisition-list th {
+    background-color: #f4f4f4;
+}
+
+.purchase-requisition-list button {
+    margin-right: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.purchase-requisition-list button:hover {
+    background-color: #0056b3;
+}

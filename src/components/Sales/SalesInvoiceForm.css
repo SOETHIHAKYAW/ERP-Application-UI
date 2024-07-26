@@ -1,0 +1,36 @@
+.sales-invoice-form {
+    padding: 20px;
+}
+
+.sales-invoice-form h2 {
+    margin-bottom: 20px;
+}
+
+.sales-invoice-form .form-group {
+    margin-bottom: 15px;
+}
+
+.sales-invoice-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.sales-invoice-form .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.sales-invoice-form .btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sales-invoice-form .btn:hover {
+    background-color: #0056b3;
+}

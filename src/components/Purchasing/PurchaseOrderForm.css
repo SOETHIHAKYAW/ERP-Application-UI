@@ -1,0 +1,40 @@
+.purchase-order-form {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.purchase-order-form h2 {
+    margin-bottom: 20px;
+}
+
+.purchase-order-form form {
+    display: grid;
+    gap: 10px;
+}
+
+.purchase-order-form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.purchase-order-form input,
+.purchase-order-form select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.purchase-order-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.purchase-order-form button:hover {
+    background-color: #0056b3;
+}

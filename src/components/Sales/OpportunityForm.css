@@ -1,0 +1,40 @@
+.opportunity-form {
+    padding: 20px;
+}
+
+.opportunity-form h2 {
+    margin-bottom: 20px;
+}
+
+.opportunity-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.opportunity-form label {
+    margin-bottom: 10px;
+}
+
+.opportunity-form input,
+.opportunity-form textarea,
+.opportunity-form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.opportunity-form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.opportunity-form button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,28 @@
+.sales-invoice-list {
+    padding: 20px;
+}
+
+.sales-invoice-list h2 {
+    margin-bottom: 20px;
+}
+
+.sales-invoice-list .btn {
+    margin-right: 10px;
+}
+
+.sales-invoice-list .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.sales-invoice-list .table th,
+.sales-invoice-list .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.sales-invoice-list .table th {
+    background-color: #f4f4f4;
+    text-align: left;
+}

@@ -1,0 +1,27 @@
+.main-content {
+    margin-left: 0px; /* Adjust based on the width of your Sidebar */
+    padding: 16px;
+  }
+  
+  /* Styles for Tabs */
+  .tabs-container {
+    margin-top: 16px;
+  }
+  
+  /* Optional: Add specific styles for the tabs */
+  .MuiTabs-root {
+    background-color: #f5f5f5; /* Example background color */
+  }
+  
+  .MuiTab-root {
+    color: #333; /* Example tab text color */
+  }
+  
+  /* Footer styling */
+  .footer {
+    margin-top: 16px;
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1; /* Example background color */
+  }
+  

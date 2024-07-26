@@ -1,0 +1,74 @@
+/* Resetting margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main container for the app */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Layout with sidebar */
+.layout-with-sidebar {
+  display: flex;
+  height: 100%;
+}
+
+/* Main content area with sidebar */
+.layout-with-sidebar .main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 250px; /* Adjust based on sidebar width */
+}
+
+/* Layout without sidebar */
+.layout-without-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Content area */
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  height: calc(100vh - 60px); /* Adjust based on header/footer height */
+  position: fixed;
+  top: 60px; /* Adjust based on header height */
+  left: 0;
+  overflow: auto;
+}
+
+/* Header and Footer styling */
+header, footer {
+  height: 60px; /* Adjust based on your design */
+  background-color: #f8f9fa;
+  padding: 0 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}

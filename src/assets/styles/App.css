@@ -1,0 +1,47 @@
+/* src/assets/styles/App.css */
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+.sidebar {
+  background-color: #f4f4f4;
+  padding: 15px;
+  height: 100vh; /* Full viewport height */
+  width: 250px; /* Adjust width as needed */
+  display: flex;
+  flex-direction: column;
+  position: fixed; /* Fixed positioning to keep it in place */
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* Add scroll if content overflows */
+}
+
+.main-content-container {
+  margin-left: 250px; /* Adjust this value to match the width of the sidebar */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+footer {
+  margin-top: auto;
+}

@@ -1,0 +1,50 @@
+.lead-list {
+    padding: 20px;
+}
+
+.lead-list h2 {
+    margin-bottom: 20px;
+}
+
+.lead-list .add-button {
+    display: inline-block;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.lead-list .add-button:hover {
+    background-color: #0056b3;
+}
+
+.lead-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lead-list th,
+.lead-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.lead-list th {
+    background-color: #f4f4f4;
+}
+
+.lead-list button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.lead-list button:hover {
+    background-color: #c82333;
+}

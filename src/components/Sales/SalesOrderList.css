@@ -1,0 +1,63 @@
+.sales-order-list {
+    padding: 20px;
+}
+
+.sales-order-list h2 {
+    margin-bottom: 20px;
+}
+
+.sales-order-list .btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.sales-order-list .btn:hover {
+    background-color: #0056b3;
+}
+
+.sales-order-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sales-order-list th, .sales-order-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.sales-order-list th {
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+.sales-order-list td {
+    text-align: left;
+}
+
+.sales-order-list button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sales-order-list button:hover {
+    background-color: #c82333;
+}
+
+.sales-order-list a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.sales-order-list a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,25 @@
+.statistics {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stats-card {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    text-align: center;
+    min-width: 200px;
+}
+
+.stats-card h4 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.stats-card p {
+    font-size: 1.5em;
+    margin: 10px 0 0;
+}
