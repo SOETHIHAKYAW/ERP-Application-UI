@@ -1,55 +1,107 @@
 import React, { useState, useEffect } from 'react';
-import { useApi } from '../../hooks/useApi';
-import { Button, Input, Modal } from '../common';
-import './InvoiceForm.css'; // Assuming you have a CSS file for styling
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import AlertDialog from '../common/AlertDialog'; // Ensure this is correctly imported or adjust the path as needed
+import { createInvoice, updateInvoice } from '../../services/accounting/invoiceApiService'; // Adjust import as needed
 
-const InvoiceForm = ({ invoiceId, onClose, onSave }) => {
-    const [invoice, setInvoice] = useState({});
-    const { get, post, put } = useApi();
+const InvoiceForm = ({ open, onClose, currentInvoice, onSave }) => {
+  const [invoice, setInvoice] = useState({
+    invoiceDate: '',
+    amount: '',
+    status: '',
+  });
 
-    useEffect(() => {
-        if (invoiceId) {
-            get(`/api/invoices/${invoiceId}`)
-                .then(response => setInvoice(response.data))
-                .catch(error => console.error('Error fetching invoice:', error));
-        }
-    }, [invoiceId]);
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setInvoice(prevState => ({ ...prevState, [name]: value }));
-    };
+  useEffect(() => {
+    if (currentInvoice) {
+      setInvoice({
+        invoiceDate: currentInvoice.invoiceDate ? currentInvoice.invoiceDate.split('T')[0] : '', // Convert to date string format
+        amount: currentInvoice.amount || '',
+        status: currentInvoice.status || '',
+      });
+    } else {
+      setInvoice({
+        invoiceDate: '',
+        amount: '',
+        status: '',
+      });
+    }
+  }, [currentInvoice]);
 
-    const handleSave = () => {
-        const request = invoiceId ? put : post;
-        const url = invoiceId ? `/api/invoices/${invoiceId}` : '/api/invoices';
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInvoice((prev) => ({ ...prev, [name]: value }));
+  };
 
-        request(url, invoice)
-            .then(response => {
-                onSave(response.data);
-                onClose();
-            })
-            .catch(error => console.error('Error saving invoice:', error));
-    };
+  const handleSubmit = async () => {
+    try {
+      if (currentInvoice) {
+        // Update existing invoice
+        await updateInvoice({
+          id: currentInvoice.id, // Ensure ID is included
+          ...invoice,
+        });
+      } else {
+        // Create new invoice
+        await createInvoice(invoice);
+      }
+      onSave(); // Refresh the invoice list
+      onClose(); // Close the dialog
+    } catch (error) {
+      console.error('Error saving invoice:', error);
+      setAlertMessage('An error occurred while saving the invoice.');
+      setAlertOpen(true);
+    }
+  };
 
-    return (
-        <Modal onClose={onClose}>
-            <h2>{invoiceId ? 'Edit Invoice' : 'Create Invoice'}</h2>
-            <Input
-                label="Title"
-                name="title"
-                value={invoice.title || ''}
-                onChange={handleChange}
-            />
-            <Input
-                label="Amount"
-                name="amount"
-                value={invoice.amount || ''}
-                onChange={handleChange}
-            />
-            <Button onClick={handleSave}>{invoiceId ? 'Update' : 'Save'}</Button>
-        </Modal>
-    );
+  const handleAlertClose = () => {
+    setAlertOpen(false);
+  };
+
+  return (
+    <Dialog open={open} onClose={onClose}>
+      <DialogTitle>{currentInvoice ? 'Edit Invoice' : 'Create Invoice'}</DialogTitle>
+      <DialogContent>
+        <TextField
+          label="Invoice Date"
+          type="date"
+          name="invoiceDate"
+          value={invoice.invoiceDate}
+          onChange={handleChange}
+          fullWidth
+          margin="dense"
+          InputLabelProps={{ shrink: true }}
+        />
+        <TextField
+          label="Amount"
+          type="number"
+          name="amount"
+          value={invoice.amount}
+          onChange={handleChange}
+          fullWidth
+          margin="dense"
+        />
+        <TextField
+          label="Status"
+          name="status"
+          value={invoice.status}
+          onChange={handleChange}
+          fullWidth
+          margin="dense"
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={handleSubmit}>{currentInvoice ? 'Update' : 'Create'}</Button>
+      </DialogActions>
+      <AlertDialog
+        open={alertOpen}
+        onClose={handleAlertClose}
+        message={alertMessage}
+      />
+    </Dialog>
+  );
 };
 
 export default InvoiceForm;
