@@ -19,6 +19,12 @@ Setup Instructions
 
 	4. Install Dependencies
 
+        • npm install react-router-dom @mui/material @mui/icons-material
+
+        • npm install @emotion/react @emotion/styled
+
+        • npm install axios
+
         •	With npm
             	npm install
 
