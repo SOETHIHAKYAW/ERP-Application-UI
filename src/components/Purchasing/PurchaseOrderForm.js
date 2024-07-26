@@ -1,122 +1,82 @@
-// src/components/Purchasing/PurchaseOrderForm.js
+import React from 'react';
+import TextField from '@mui/material/TextField';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
+import DialogContent from '@mui/material/DialogContent';
+import MenuItem from '@mui/material/MenuItem';
 
-import React, { useState, useEffect } from 'react';
-import { addPurchaseOrder, updatePurchaseOrder } from '../../services/purchase/purchaseOrderApiService';
-import { getPurchaseRequisitions } from '../../services/purchase/purchaseRequisitionApiService';
-import Input from '../common/Input';
-import Button from '../common/Button';
-import Notification from '../common/Notification';
-
-const PurchaseOrderForm = ({ selectedOrder, onFormSubmit }) => {
-  const [formState, setFormState] = useState({
-    requisitionId: '',
-    orderDate: '',
-    totalAmount: '',
-    status: '',
-  });
-  const [purchaseRequisitions, setPurchaseRequisitions] = useState([]);
-
-  useEffect(() => {
-    const fetchPurchaseRequisitions = async () => {
-      try {
-        const data = await getPurchaseRequisitions();
-        setPurchaseRequisitions(data);
-      } catch (error) {
-        console.error('Failed to fetch purchase requisitions:', error);
-      }
-    };
-
-    fetchPurchaseRequisitions();
-  }, []);
-
-  useEffect(() => {
-    if (selectedOrder) {
-      setFormState({
-        requisitionId: selectedOrder.requisition.id,
-        orderDate: new Date(selectedOrder.orderDate).toISOString().substring(0, 10),
-        totalAmount: selectedOrder.totalAmount,
-        status: selectedOrder.status,
-      });
-    }
-  }, [selectedOrder]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      if (selectedOrder) {
-        await updatePurchaseOrder(selectedOrder.id, formState);
-        Notification.show('Purchase order updated successfully!', 'success');
-      } else {
-        await addPurchaseOrder(formState);
-        Notification.show('Purchase order added successfully!', 'success');
-      }
-
-      onFormSubmit();
-      setFormState({
-        requisitionId: '',
-        orderDate: '',
-        totalAmount: '',
-        status: '',
-      });
-    } catch (error) {
-      Notification.show('Failed to save purchase order.', 'error');
-      console.error('Failed to save purchase order:', error);
-    }
-  };
-
+const PurchaseOrderForm = ({
+  formData,
+  onChange,
+  onSave,
+  onClose,
+  isEditing,
+  requisitions
+}) => {
   return (
-    <form onSubmit={handleSubmit} className="form">
-      <div className="form-group">
-        <label htmlFor="requisitionId">Purchase Requisition</label>
-        <select
-          name="requisitionId"
-          value={formState.requisitionId}
-          onChange={handleChange}
-          required
-          className="form-control"
+    <>
+      <DialogContent>
+        <TextField
+          margin="dense"
+          label="Order Date"
+          type="date"
+          fullWidth
+          name="orderDate"
+          value={formData.orderDate}
+          onChange={onChange}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <TextField
+          margin="dense"
+          label="Total Amount"
+          type="number"
+          fullWidth
+          name="totalAmount"
+          value={formData.totalAmount}
+          onChange={onChange}
+        />
+        <TextField
+          margin="dense"
+          label="Status"
+          type="text"
+          fullWidth
+          select
+          name="status"
+          value={formData.status}
+          onChange={onChange}
         >
-          <option value="">Select Purchase Requisition</option>
-          {purchaseRequisitions.map((requisition) => (
-            <option key={requisition.id} value={requisition.id}>
-              {requisition.id} - {requisition.status}
-            </option>
+          <MenuItem value="Draft">Draft</MenuItem>
+          <MenuItem value="In Progress">In Progress</MenuItem>
+          <MenuItem value="Completed">Completed</MenuItem>
+          <MenuItem value="Cancelled">Cancelled</MenuItem>
+        </TextField>
+        <TextField
+          margin="dense"
+          label="Requisition"
+          name="requisitionId"
+          fullWidth
+          select
+          value={formData.requisitionId}
+          onChange={onChange}
+        >
+          {requisitions.map(requisition => (
+            <MenuItem key={requisition.id} value={requisition.id}>
+              {requisition.id}
+            </MenuItem>
           ))}
-        </select>
-      </div>
-      <Input
-        label="Order Date"
-        type="date"
-        name="orderDate"
-        value={formState.orderDate}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        label="Total Amount"
-        type="number"
-        name="totalAmount"
-        value={formState.totalAmount}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        label="Status"
-        name="status"
-        value={formState.status}
-        onChange={handleChange}
-        required
-      />
-      <Button type="submit" text={selectedOrder ? 'Update' : 'Add'} />
-    </form>
+        </TextField>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose} color="primary">
+          Cancel
+        </Button>
+        <Button onClick={onSave} color="primary">
+          {isEditing ? 'Save' : 'Add'}
+        </Button>
+      </DialogActions>
+    </>
   );
 };
 

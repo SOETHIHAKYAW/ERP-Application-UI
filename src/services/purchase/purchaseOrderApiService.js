@@ -15,7 +15,8 @@ export const getPurchaseOrders = async () => {
 
 export const addPurchaseOrder = async (orderData) => {
     try {
-        const response = await axios.post(`${BASE_URL}`, orderData);
+        const response = await axios.post(BASE_URL, orderData);
+        console.log("Create Purchase Order",response)
         return response.data;
     } catch (error) {
         throw new Error('Failed to add purchase order');
