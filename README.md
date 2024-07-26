@@ -14,7 +14,10 @@ Setup Instructions
 	2. Navigate to the Frontend Directory
         cd ERP-Application-UI
 
-	3. Install Dependencies
+    3. Branchs
+        git checkout development
+
+	4. Install Dependencies
 
         •	With npm
             	npm install
@@ -22,9 +25,9 @@ Setup Instructions
         •	With Yarm
             	yarn install
 
-	4. Run the Application
+	5. Run the Application
         •	With npm
             	npm start
-            
+
         •	With Yarm
             	yarn start
